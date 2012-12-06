@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}404 - Page Not Found{% endblock %}
+
+{% block content %}
+    <h1>{% trans 'Page Not Found!' %}</h1>
+
+    <p><strong>{% trans 'Sorry, we weren't able to find the page you requested.' %}</strong></p>
+    <p><strong><em>{% trans 'Suggestions, Go on:' %}</em></strong></p>
+
+    <ul>
+      <li><a href="/">{% trans 'Main Page' %}</a></li>
+      <li><a href="javascript:void(0);" onclick="history.go(-1);">{% trans 'Go back to the previous page' %}</a></li>
+    </ul>
+{% endblock %}
+
+

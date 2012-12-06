@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'Shorten URL address' %}{% endblock %}
+{% block meta_description %}{% trans 'Online service to shorten your long URLs' %}{% endblock %}
+{% block meta_keywords %}{% trans 'short URL, URL, bitly, awesome, save, share, shorten' %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans 'The list of recent URLs which have been shortened' %}</h1>
+
+    <h3><a href="{% url shorturl.views.new %}">{% trans 'A new URL to shorten' %}</a></h3>
+
+    <p>{% trans 'List of shortened URLs:' %}</p>
+    <ul>
+        {% for short in shorten %}
+        <li>{{ short.date|date:"M d, Y" }} &nbsp;-&nbsp; <strong>{{ short.url }}</strong> {% trans 'via' %} <strong><a href="http://{{ request.get_host }}{% url shorturl.views.redirect_to_url short.code %}" rel="nofollow" target="_blank">{{ request.get_host }}{% url shorturl.views.redirect_to_url short.code %}</a></strong> <em>({{ short.nb_access }} {% trans 'access' %})</em></li>
+        {% empty %}
+        <li>{% trans 'No link at the moment, please check back later ;)' %}</li>
+        {% endfor %}
+  </ul>
+{% endblock %}

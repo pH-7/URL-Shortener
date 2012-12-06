@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}500 - Internal Server Error{% endblock %}
+
+{% block content %}
+    <h1>{% trans 'Whoops! Internal Server Error!' %}</h1>
+
+    <p>{% trans 'The server encountered an error. This is most often caused by a scripting problem, a failed database access attempt, or other similar reasons.' %}<br />
+    {% trans 'Please come back later!' %}</p>
+{% endblock %}

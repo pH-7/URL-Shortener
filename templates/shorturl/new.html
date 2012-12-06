@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'Add a new link' %}{% endblock %}
+{% block meta_description %}{% trans 'Online service to shorten your long URLs' %}{% endblock %}
+{% block meta_keywords %}{% trans 'short URL, URL, bitly, awesome, save, share, shorten' %}{% endblock %}
+
+{% block content %}
+  <h1>{% trans 'Shorten URL' %}</h1>
+
+  <form method="post" action="{% url shorturl.views.new %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% trans 'Add a new link' %}</button>
+  </form>
+{% endblock %}
